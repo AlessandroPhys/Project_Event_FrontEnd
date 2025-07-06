@@ -1,33 +1,30 @@
-import { Component } from '@angular/core';
-import { EventService } from './services/event.service'; // Asegúrate de que la ruta es correcta
-
+import { Component, OnInit } from '@angular/core';
+import { EventService } from './services/event.service'; // Ajusta la ruta
 @Component({
-  selector: 'app-root',
+  selector: 'app-root', // O 'app-events-list' si creaste uno nuevo
   templateUrl: './app.component.html',
-  standalone: false,
-  styleUrl: './app.component.css'
+  standalone: false, // Si estás usando Angular 14 o superior y quieres usar standalone components
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'event-app-front';
-
+export class AppComponent implements OnInit {
+  title = 'Eventos Deportivos';
   events: any[] = [];
-
-  constructor(private services: EventService) { }
+  isLoading: boolean = true;
+  errorMessage: string | null = null;
+  constructor(private eventService: EventService) { }
 
   ngOnInit(): void {
-    this.getEvents();
-  }
-
-  getEvents(): void {
-    this.services.getEvents().subscribe(
-      (response: any) => {
-        console.log('Respuesta del backend:', response); // se ve en la consola del navegador
-        this.events = response;
+    this.eventService.getEvents().subscribe({
+      next: (data) => {
+        this.events = data;
+        this.isLoading = false;
+        console.log('Eventos cargados:', this.events);
       },
-      (error: any) => {
-        console.error('Error fetching events:', error);
+      error: (err) => {
+        this.errorMessage = 'Error al cargar eventos. Por favor, inténtalo de nuevo más tarde.';
+        this.isLoading = false;
+        console.error('Error al cargar eventos:', err);
       }
-    );
-
+    });
   }
 }
