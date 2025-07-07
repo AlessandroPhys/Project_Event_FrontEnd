@@ -12,10 +12,10 @@ export class EventService {
   constructor(private http: HttpClient) { }
 
   getEvents(): Observable<any[]>{//Asumimos que devuelve un array de eventos
-    return this.http.get<any[]>(`${this.apiUrl}/events`);
+    return this.http.get<any[]>(`${this.apiUrl}/api/v1/events`);
   }
 
   getEventById(id:number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/events/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/api/v1/events/${id}`);
   }
 }
