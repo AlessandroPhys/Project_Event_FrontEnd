@@ -1,0 +1,5 @@
+.wrapper {
+    width: calc(100% - 60px);
+    padding: 50px 30px;
+    box-sizing: content-box;
+}

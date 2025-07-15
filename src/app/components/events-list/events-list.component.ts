@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import {EventService} from '../../services/event.service'; //Adjuntar la ruta
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-events-list',
@@ -13,20 +14,17 @@ export class EventsListComponent implements OnInit {
   isLoading: boolean = true;
   errorMessage:string | null = null;
 
-  constructor(private eventService: EventService) { }
+  constructor(private eventService: EventService, public authService: AuthService) { }
 
-  ngOnInit():void {
-    this.eventService.getEvents().subscribe({
-      next:(data)=> {
-        this.events = data;
-        this.isLoading = false;
-        console.log('Eventos cargados:', this.events);
-      },
-      error:(err)=> {
-        this.errorMessage = 'Error al cargar eventos. Por favor, intentalo de nuevo mas tarde';
-        this.isLoading = false;
-        console.error('Error al cargar eventos:', err);
-      }
-    });
+  async ngOnInit() {
+    this.eventService.getEvents()
+    .then((json) => {
+      this.events =  json;
+      this.isLoading = false;
+    },
+    () => {
+      this.errorMessage = 'Error al cargar eventos. Por favor, intentalo de nuevo mas tarde';
+      this.isLoading = false;
+    })
   }
 }

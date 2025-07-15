@@ -15,7 +15,7 @@ import { EventsListComponent } from './components/events-list/events-list.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule //Angular solo dice que hay una version mas actualizada pero no se va a romper
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
