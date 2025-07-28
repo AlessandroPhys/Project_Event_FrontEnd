@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+app-nav-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+}
+
+.error-field {
+    padding: 0 .75rem;
+    font-size: 70%;
+    color: var(--bs-danger);
+}
+
+.wrapper {
+    position: relative;
+    top: 57px;
+    width: calc(100% - 60px);
+    padding: 50px 30px;
+    box-sizing: content-box;
+}

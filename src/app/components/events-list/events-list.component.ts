@@ -1,6 +1,7 @@
-import { Component,OnInit } from '@angular/core';
-import {EventService} from '../../services/event.service'; //Adjuntar la ruta
+import { Component, OnInit } from '@angular/core';
+import { EventService } from '../../services/event.service';
 import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-events-list',
@@ -9,7 +10,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./events-list.component.css']
 })
 export class EventsListComponent implements OnInit {
-  title = 'mi-evento-frontend';
+  title = "Events app";
   events: any[] = [];
   isLoading: boolean = true;
   errorMessage:string | null = null;

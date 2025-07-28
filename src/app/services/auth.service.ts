@@ -11,20 +11,35 @@ export class AuthService {
   constructor(private router: Router) { }
 
   private baseURL = environment.apiUrl;
+  public user = localStorage.getItem("user");
 
   login(email: string, password: string) {
     fetch(`${this.baseURL}/api/v1/auth/login`, {
       method: "POST",
       headers: {
-        "Content-Type" : "application/json"
+        "Content-Type" : "application/json",
+        "Accept" : "application/json"
       },
       body: JSON.stringify({"email" : email, "password" : password})
     })
-    .then((res) => res.json())
-    .then((json) => {
-      localStorage.setItem("token", json["token"]);
-      if (this.isAuthenticated()) {
-        this.router.navigate(['/events']);
+    .then(async (res) => {
+      let json = await res.json();
+      if (res.status !== 200) {
+        for (let field of ["email", "password", "message"]) {
+          let element = document.getElementById(`error_${field}`);
+          if (element) {
+            element.innerText = json["errors"] !== undefined && json["errors"][field] !== undefined && res.status === 422 ? json["errors"][field][0] : res.status === 401 && field === "message" ? json["message"] : "";
+          }
+        }
+      }
+      else {
+        localStorage.setItem("token", json["token"]);
+        localStorage.setItem("role", json["role"]);
+        this.user = email;
+        localStorage.setItem("user", email);
+        if (this.isAuthenticated()) {
+          this.router.navigate(['/events']);
+        }
       }
     });
   }
@@ -33,28 +48,23 @@ export class AuthService {
     return localStorage.getItem("token") !== null;
   }
 
-  async getWrapper(url: string, method: string) {
-    let res  = await fetch(`${this.baseURL}${url}`, {
-      method: method,
-      headers: {
-        "Content-Type" : "application/json",
-        "Authorization" : `Bearer ${localStorage.getItem("token")}`
-      }
-    });
-    let json = await res.json();
-  
-    return json;
+  isAdmin() {
+    return localStorage.getItem("role") === "ADMIN";
   }
 
-    async PostWrapper(url: string, method: string, body: object) {
-    let res  = await fetch(`${this.baseURL}${url}`, {
+  async wrapper(url: string, method: string, body?: object) {
+    let init = {
       method: method,
       headers: {
         "Content-Type" : "application/json",
-        "Authorization" : `Bearer ${localStorage.getItem("token")}`
-      },
-      body : JSON.stringify(body)
-    });
+        "Authorization" : `Bearer ${localStorage.getItem("token")}`,
+        "Accept" : "application/json"
+      }
+    };
+    if (body !== null) {
+      init["body"] = JSON.stringify(body)
+    }
+    let res  = await fetch(`${this.baseURL}${url}`, init);
     let json = await res.json();
   
     return json;
@@ -68,7 +78,7 @@ export class AuthService {
       }
     })
     .then((res) => {
-      localStorage.removeItem("token");
+      localStorage.clear();
       this.router.navigate(["/auth"]);
     });
   }

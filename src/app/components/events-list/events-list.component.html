@@ -1,32 +1,37 @@
+<app-nav-bar></app-nav-bar>
 <div class="bg-body-secondary" style="min-height: 100vh;">
-  <nav class="py-2 bg-body-tertiary border-bottom">
-    <div class="container d-flex flex-wrap">
-      <ul class="nav me-auto">
-        <li class="nav-item">
-          <a href="/events" class="nav-link link-body-emphasis px-2 active" aria-current="page">Inicio</a>
-        </li>
-      </ul>
-      <ul class="nav">
-        <li class="nav-item"><button type="button" class="nav-link link-body-emphasis px-2" (click)="authService.logout()" title="Cerrar Sesión">Cerrar Sesión</button></li>
-      </ul>
-    </div>
-  </nav>
   <main class="form-signin w-100 m-auto">
     <div class="wrapper">
-      <h1>{{title}}</h1>
+      <h1 class="text-center mt-5">{{title}}</h1>
 
       <div *ngIf="isLoading">Cargando eventos...</div>
       <div *ngIf="errorMessage">{{errorMessage}}</div>
 
-      <div *ngIf="!isLoading && !errorMessage">
+      <div class="container" *ngIf="!isLoading && !errorMessage">
         <h2>Proximos Eventos</h2>
-        <div *ngIf="events.length > 0; else noEvents">
-          <div *ngFor="let event of events" style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
-            <h3>{{event.title}}</h3>
-            <p>{{event.description}}</p>
-            <p>Fecha:{{event.date_time | date:'short'}}</p>
-            <p>Lugar:{{event.location}}</p>
-            <p>Capacidad:{{event.capacity}}</p>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" *ngIf="events.length > 0; else noEvents">
+          <div class="col" *ngFor="let event of events">
+            <div class="card shadow-sm"> 
+              <svg aria-label="Placeholder: Thumbnail" class="bd-placeholder-img card-img-top" height="225" preserveAspectRatio="xMidYMid slice" role="img" width="100%" xmlns="http://www.w3.org/2000/svg">
+                <title>{{ event.title }}</title>
+                <rect width="100%" height="100%" fill="#55595c"></rect>
+                <text x="20%" y="50%" fill="#eceeef" dy=".3em">{{ event.title }}</text>
+              </svg> 
+              <div class="card-body">
+                <p class="card-text">{{ event.description }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
+                  </div> 
+                </div>
+                <div class="mt-2">
+                  <p class="text-body-secondary fs-6 m-0">Fecha: {{ event.date_time | date:'short' }}</p>
+                  <p class="text-body-secondary fs-6 m-0">Lugar: {{ event.location }}</p>
+                  <p class="text-body-secondary fs-6 m-0">Capacidad: {{ event.capacity }}</p>
+                </div>
+              </div> 
+            </div>
           </div>
         </div>
         <ng-template #noEvents>

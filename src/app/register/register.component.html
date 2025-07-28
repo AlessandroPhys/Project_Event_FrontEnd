@@ -1,0 +1,39 @@
+<app-nav-bar></app-nav-bar>
+<div class="bg-body-secondary" style="min-height: 100vh;">
+    <main class="form-signin w-100 m-auto">
+        <div class="wrapper">
+            <h1 class="text-center mb-5">Registrate!</h1>
+              <p class="text-center text-success m-3" id="id_msg" style="display: none;">Registro Exitoso.</p>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Nombres</span>
+                <input type="text" [(ngModel)]="first_name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              </div>
+              <p class="error-field" id="error_first_name"></p>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Apellido</span>
+                <input type="text" [(ngModel)]="last_name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              </div>
+              <p class="error-field" id="error_last_name"></p>
+              <div class="input-group mb-3">
+                <label class="input-group-text">Provincia</label>
+                <select class="form-select" [(ngModel)]="state_id" id="id_states">
+                  <option selected="">------</option>
+                </select>
+              </div>
+              <p class="error-field" id="error_state_id"></p>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">&#64;</span>
+                <input type="text" [(ngModel)]="email" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <p class="error-field" id="error_email"></p>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Contraseña</span>
+                <input type="password" [(ngModel)]="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              </div>
+              <p class="error-field" id="error_password"></p>
+              <div class="w-100 text-end">
+                <button class="btn btn-primary w-25 py-2" type="button" (click)="register()">Registrarme</button>
+              </div>
+        </div>
+    </main>
+</div>

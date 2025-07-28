@@ -17,7 +17,7 @@ export class EventService {
   // }
 
   async getEvents() {
-    return await this.authService.getWrapper("/api/v1/events", "GET");
+    return await this.authService.wrapper("/api/v1/events", "GET");
   }
 
   getEventById(id:number): Observable<any> {
