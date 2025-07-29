@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+//<<<<<<< Updated upstream
 import { EventService } from '../../services/event.service';
+//=======
+//import {EventService} from '../../services/event.service'; Adjuntar la ruta
+//>>>>>>> Stashed changes
 import { AuthService } from '../../services/auth.service';
 
 

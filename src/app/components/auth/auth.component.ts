@@ -14,7 +14,7 @@ export class AuthComponent {
 
   public email = null;
   public password = null;
-  
+
   constructor(private service: AuthService) {}
 
   login() {
