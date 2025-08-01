@@ -4,7 +4,8 @@
   background-color: #222;
   color: #eee;
   text-align: center;
-  padding: 1rem 0;
   font-size: 0.9rem;
   box-sizing: border-box;
+
+  padding: 0; /* sin padding */
 }
