@@ -1,48 +1,64 @@
-:host {
-  display: block;
-  width: 100%;
-  background-color: var(--color-secondary-dark);
-  color: var(--color-text-light);
-  padding: 4px 0 0 0; /* solo padding arriba para la barra */
-  box-sizing: border-box;
+.mat-toolbar {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
-}
-
-/* Barra pequeña arriba */
-:host::before {
-  content: "";
-  display: block;
-  height: 4px; /* altura barra */
   width: 100%;
-  background-color: var(--color-primary);
+  height: 64px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.toolbar-logo {
   position: absolute;
-  top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 40px;
+  display: flex;
+  align-items: center;
 }
 
-.navbar-toggler {
-  border: 2px solid var(--color-text-light);
-  border-radius: 50%;
-  padding: 6px;
-  background-color: transparent;
-  transition: none; /* sin animaciones */
+.toolbar-logo img {
+  max-height: 100%;
+  user-select: none;
+  pointer-events: none;
 }
 
-.navbar-toggler:hover {
-  background-color: rgba(128, 128, 128, 0.2); /* Gris suave al hover */
+.spacer {
+  flex: 1 1 auto;
 }
 
-.navbar-toggler:active {
-  background-color: rgba(128, 128, 128, 0.5); /* Gris más marcado al click */
+button[mat-button] {
+  display: flex;
+  align-items: center;
+  width: auto;
+  color: rgb(114, 60, 60);
 }
 
+.desktop-only {
+  display: inline;
+}
 
+.mobile-only {
+  display: none;
+}
 
+@media (max-width: 600px) {
+  .desktop-only {
+    display: none;
+  }
+  .mobile-only {
+    display: inline;
+    margin-left: auto;
+    margin-right: 4px;
+  }
+}
 
-
-
-
-
+@media (min-width: 601px) {
+  .desktop-only {
+    display: inline;
+  }
+  .mobile-only {
+    display: none;
+  }
+}

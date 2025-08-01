@@ -66,7 +66,7 @@ export class AuthService {
     }
     let res  = await fetch(`${this.baseURL}${url}`, init);
     let json = await res.json();
-  
+
     return json;
   }
 
