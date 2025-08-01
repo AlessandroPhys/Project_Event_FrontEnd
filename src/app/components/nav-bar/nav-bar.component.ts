@@ -3,11 +3,10 @@ import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-nav-bar',
-  standalone: true,
   templateUrl: './nav-bar.component.html',
-  styleUrl: './nav-bar.component.css'
+  standalone: false,
+  styleUrl: './nav-bar.component.css'  // <--- corregido aquí
 })
 export class NavBarComponent {
-
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService) {}
 }

@@ -1,36 +1,134 @@
-/* You can add global styles to this file, and also import other style files */
+/* Variables globales - Colores semánticos */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+:root {
+  --color-primary: #ad2e24;          /* Persian Orange */
+  --color-primary-dark: #c75146;     /* Jasper */
+  --color-secondary: #ea8c55;        /* Fire Brick */
+  --color-secondary-dark: #81171b;   /* Falu Red */
+  --color-background: #540804;       /* Rosewood */
+  --color-text-light: #000000;       /* Color claro para texto */
+  --color-text-secondary: rgba(0, 0, 0, 0.7); /* Texto secundario translúcido */
+}
+
+/* Reset y base */
+
 * {
-    font-family: "Roboto Serif";
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
+body {
+  background-color: var(--color-background);
+  color: var(-black-color-text-light);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* Navbar */
 app-nav-bar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 3;
+  background-color: var(--color-secondary-dark);
+  color: var(--color-text-light);
+  padding: 1rem 2rem;
+  display: block;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
 }
 
-.error-field {
-    padding: 0 .75rem;
-    font-size: 70%;
-    color: var(--bs-danger);
+app-nav-bar a,
+app-nav-bar button {
+  color: var(--color-text-light);
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
+app-nav-bar a:hover,
+app-nav-bar button:hover {
+  color: var(--color-primary);
+}
+
+/* Botones */
+button,
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  border: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 600;
+}
+
+button:hover,
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-text-light);
+}
+
+/* Cards */
+.card {
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-primary);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(84, 8, 4, 0.3);
+  color: var(--color-text-light);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Cards SVG placeholder */
+.card svg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px 4px 0 0;
+}
+
+/* Footer */
+app-footer {
+  background-color: var(--color-secondary-dark);
+  color: var(--color-text-light);
+  padding: 1rem 2rem;
+  text-align: center;
+  display: block;
+  margin-top: auto;
+}
+
+/* Texto secundario */
+.text-body-secondary {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Contenedor wrapper */
 .wrapper {
-    position: relative;
-    top: 57px;
-    width: calc(100% - 60px);
-    padding: 50px 30px;
-    box-sizing: content-box;
+  position: relative;
+  top: 60px; /* Considera el navbar fixed */
+  padding: 50px 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-.container-m {
-    width: 45%;
+/* Responsive */
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 30px 15px;
+  }
 }
 
 
-@media only screen and (max-width: 425px) {
-    .container-m {
-        width: 80%;
-    }
-}

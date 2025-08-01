@@ -1,0 +1,48 @@
+:host {
+  display: block;
+  width: 100%;
+  background-color: var(--color-secondary-dark);
+  color: var(--color-text-light);
+  padding: 4px 0 0 0; /* solo padding arriba para la barra */
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+/* Barra pequeña arriba */
+:host::before {
+  content: "";
+  display: block;
+  height: 4px; /* altura barra */
+  width: 100%;
+  background-color: var(--color-primary);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.navbar-toggler {
+  border: 2px solid var(--color-text-light);
+  border-radius: 50%;
+  padding: 6px;
+  background-color: transparent;
+  transition: none; /* sin animaciones */
+}
+
+.navbar-toggler:hover {
+  background-color: rgba(128, 128, 128, 0.2); /* Gris suave al hover */
+}
+
+.navbar-toggler:active {
+  background-color: rgba(128, 128, 128, 0.5); /* Gris más marcado al click */
+}
+
+
+
+
+
+
+
+

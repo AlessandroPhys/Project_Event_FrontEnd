@@ -5,16 +5,16 @@ import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-auth',
-  standalone: true,
+  standalone: false,
   templateUrl: './auth.component.html',
-  styleUrl: './auth.component.css',
-  imports: [FormsModule, NavBarComponent],
+  styleUrl: './auth.component.css'
+
 })
 export class AuthComponent {
 
   public email?;
   public password?;
-  
+
   constructor(private service: AuthService) {}
 
   login(event) {
