@@ -1,35 +1,59 @@
 /* Variables globales - Colores semánticos */
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 
 :root {
-  /* Escala de blancos y grises neutros */
-  --color-background: #ffffffb9;
-  --color-surface: #f5f5f5;
-  --color-border: #cccccc;
-  --color-text-primary: #212121;
-  --color-text-secondary: #616161;
+  --font-primary: 'Roboto', sans-serif;
+  /* Colores primarios (rojo pastel) */
+  --color-primary:        #d67a6f; /* coral suave */
+  --color-primary-dark:   #a85b52; /* terracota */
+  --color-primary-light:  #ff1500; /* rosa pastel */
 
-  /* Rojo profesional */
-  --color-primary: #b00020;
-  --color-primary-dark: #7f0015;
-  --color-primary-light: #ff5c5c;
+ /* Colores secundarios (amarillo suave, elegante) */
+--color-secondary:       #f0e8cc; /* amarillo marfil suave */
+--color-secondary-dark:  #c9b77a; /* arena tostada */
+--color-secondary-light: #faf4d6; /* crema muy clara */
+  /* Fondo y superficies */
+  --color-background: #fdfcfb; /* blanco cálido muy suave */
+  --color-surface:    #f9f7f4; /* gris cálido pastel */
+
+  /* Texto */
+  --color-text-primary:     #2b2b2b;
+  --color-text-secondary:   #5a5a5a;
+  --color-text-on-primary:  #ffffff;
+  --color-text-on-secondary:#2b2b2b;
+
+  /* Bordes */
+  --color-border: #e2d9d5; /* gris cálido */
+}
+
+
+
+.price {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; /* Bold para el precio */
+  font-size: 2rem;
+  color: #000;
 }
 
 /* Reset y base */
 * {
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-primary);
   margin: 0;
   padding: 0;
 }
 
 html, body {
   height: 100%;
+  width: 100%;
+
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: var(--color-background);
   color: var(--color-text-primary);
   line-height: 1.5;
+  padding: 0;
+
   min-height: 100vh;
 }
 
@@ -53,73 +77,33 @@ html, body {
   border-radius: 4px 4px 0 0;
 }
 
+/* Layout app */
+.app-container {
+  display: block; /* no forzar altura ni flex */
+}
+
+.app-content {
+  padding: 50px 30px 60px; /* espacio para navbar y footer */
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .app-content {
+    padding: 30px 15px 60px;
+  }
+}
+
 /* Footer */
 app-footer {
-  background-color: var(--color-primary-dark);
-  color: var(--color-background);
-  padding: 1rem 2rem;
+  color: var(--color-text-on-primary);
   text-align: center;
   display: block;
-  margin-top: auto;
 }
 
 /* Texto secundario */
 .text-body-secondary {
   color: var(--color-text-secondary);
   font-size: 0.9rem;
-}
-
-/* Contenedor wrapper */
-.wrapper {
-  position: relative;
-  top: 60px; /* Considera el navbar fixed */
-  padding: 50px 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .wrapper {
-    padding: 30px 15px;
-  }
-}
-
-/* Layout app */
-.app-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.app-content {
-  flex: 1;
-  overflow-y: auto;
-}
-
-.sidenav-container {
-  height: 100vh;
-}
-
-.mat-sidenav {
-  margin-top: 64px;
-  height: calc(100vh - 64px);
-  width: 250px;
-  background-color: #fff;
-  border-right: 1px solid rgba(0,0,0,0.1);
-}
-
-.mat-sidenav-content {
-  margin-top: 64px;
-  padding: 1rem;
-  min-height: calc(100vh - 64px);
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-app-footer {
-  margin-top: auto;
 }

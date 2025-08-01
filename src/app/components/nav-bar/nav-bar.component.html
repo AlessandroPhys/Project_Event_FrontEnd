@@ -1,26 +1,50 @@
+<!-- Barra decorativa -->
 <mat-sidenav-container class="sidenav-container">
 
-  <mat-sidenav #sidenav mode="over" class="sidenav-overlay">
-    <button mat-icon-button class="close-btn" (click)="sidenav.close()">
+  <!-- Sidenav izquierda -->
+  <mat-sidenav #leftSidenav mode="over" position="start" class="sidenav-overlay left-sidenav">
+    <button mat-icon-button class="close-btn left-close-btn" (click)="leftSidenav.close()">
       <mat-icon>close</mat-icon>
     </button>
 
     <mat-nav-list>
-      <a mat-list-item routerLink="/" (click)="sidenav.close()">Inicio</a>
-      <a mat-list-item routerLink="/admin" (click)="sidenav.close()">Admin</a>
-      <a mat-list-item routerLink="/events" (click)="sidenav.close()">Eventos</a>
+      <a mat-list-item routerLink="/" (click)="leftSidenav.close()">Inicio</a>
+      <a mat-list-item routerLink="/admin" (click)="leftSidenav.close()">Admin</a>
+      <a mat-list-item routerLink="/events" (click)="leftSidenav.close()">Eventos</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Sidenav derecha -->
+  <mat-sidenav #rightSidenav mode="over" position="end" class="sidenav-overlay right-sidenav">
+    <button mat-icon-button class="close-btn right-close-btn" (click)="rightSidenav.close()">
+      <mat-icon>close</mat-icon>
+    </button>
+
+    <mat-nav-list>
+      <a mat-list-item href="#" (click)="rightSidenav.close()">Perfil</a>
+      <a mat-list-item href="#" (click)="rightSidenav.close()">Configuración</a>
+      <a mat-list-item href="#" (click)="rightSidenav.close()">Cerrar sesión</a>
     </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
+    <div class="top-accent-bar"></div>
+
+
+
     <mat-toolbar color="primary" class="toolbar">
-      <button mat-icon-button class="menu-btn" (click)="sidenav.open()">
+      <!-- Botón hamburguesa -->
+      <button mat-icon-button class="menu-btn" (click)="leftSidenav.open()">
         <mat-icon>menu</mat-icon>
       </button>
 
-      <span class="spacer"></span>
+      <!-- Logo centrado -->
+      <div class="toolbar-logo">
+        <img src="logo.png" alt="Logo">
+      </div>
 
-      <button mat-icon-button>
+      <!-- Botón usuario -->
+      <button mat-icon-button class="person-btn" (click)="rightSidenav.open()">
         <mat-icon>person</mat-icon>
       </button>
     </mat-toolbar>
@@ -28,6 +52,7 @@
     <div class="content">
       <router-outlet></router-outlet>
     </div>
+
   </mat-sidenav-content>
 
 </mat-sidenav-container>

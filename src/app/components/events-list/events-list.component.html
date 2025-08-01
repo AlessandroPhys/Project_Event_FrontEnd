@@ -4,17 +4,41 @@
   <ng-container *ngIf="events.length > 0; else noEvents">
     <div class="events-grid">
       <div class="event-card" *ngFor="let event of events">
-        <svg class="event-image" xmlns="http://www.w3.org/2000/svg">
-          <rect width="100%" height="100%" fill="#55595c"></rect>
-          <text x="20%" y="50%" fill="#eceeef">{{ event.title }}</text>
-        </svg>
+
+        <!-- Imagen -->
+        <img class="event-image"
+             [src]="'/img/' + event.image_url"
+             alt="{{ event.title }}"
+             onerror="this.src='/img/carrera-de-ciclismo.png'" />
 
         <div class="event-info">
-          <p>{{ event.description }}</p>
-          <p class="meta">Fecha: {{ event.date_time | date:'short' }}</p>
-          <p class="meta">Lugar: {{ event.location }}</p>
+          <!-- Título -->
+          <h3 class="event-title">{{ event.title }}</h3>
+
+          <!-- Fecha y hora destacadas -->
+          <div class="event-datetime">
+            <p class="event-date">📅 {{ event.date_time | date:'dd MMM yyyy' }}</p>
+            <p class="event-time">🕒 {{ event.date_time | date:'HH:mm' }} hs</p>
+          </div>
+
+          <!-- Lugar -->
+          <p class="meta">📍 {{ event.location }}</p>
+
+          <!-- Capacidad -->
           <p class="meta">Capacidad: {{ event.capacity }}</p>
-          <button class="btn-view">Ver</button>
+
+          <!-- Precio -->
+          <p class="event-price">💲 {{ event.price | currency:'USD' }}</p>
+
+          <!-- Acciones -->
+          <div class="event-actions">
+            <button class="btn-view">Ver detalles</button>
+            <a class="btn-whatsapp"
+               [href]="'https://wa.me/54XXXXXXXXX?text=Hola! Quisiera más información sobre el evento: ' + event.title"
+               target="_blank">
+              <img src="assets/icons/whatsapp.svg" alt="WhatsApp"> WhatsApp
+            </a>
+          </div>
         </div>
       </div>
     </div>

@@ -8,9 +8,8 @@ import { MatSidenav } from '@angular/material/sidenav';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
-  @ViewChild('sidenav') sidenav!: MatSidenav;
+  @ViewChild('leftSidenav') leftSidenav!: MatSidenav;
+  @ViewChild('rightSidenav') rightSidenav!: MatSidenav;
 
-  toggleSidenav() {
-    this.sidenav.toggle();
-  }
+  // Si querés alguna lógica adicional, acá la ponés
 }

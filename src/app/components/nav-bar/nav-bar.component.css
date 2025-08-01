@@ -4,47 +4,106 @@
   position: relative;
 }
 
-/* Sidenav que cubre toda la pantalla */
+/* Estilos comunes para ambos sidenavs */
 .sidenav-overlay {
-  position: fixed !important; /* sobre todo */
-  top: -65px;
-  border-radius: 0 !important;
-  left: 0;
+  position: fixed !important;
+  top: 0px !important; /* Oculta el overlay */
   height: 100vh !important;
-  width: 85vw !important;
-  z-index: 3000 !important; /* más que toolbar */
+  width: 80% !important;
+  z-index: 3000 !important;
   background: white;
   display: flex;
   flex-direction: column;
   padding: 16px;
   box-sizing: border-box;
+  border-radius: 0 !important; /* Cuadrado */
 }
 
-/* Botón cerrar ubicado exactamente donde estaba la hamburguesa */
+/* Sidenav izquierda */
+.left-sidenav {
+  left: 0;
+}
+
+/* Sidenav derecha */
+.right-sidenav {
+  right: 0;
+}
+
+/* Botón cerrar */
 .close-btn {
   position: absolute;
   top: 8px;
+  z-index: 3100;
+}
+.left-close-btn {
   left: 8px;
 }
+.right-close-btn {
+  right: 8px;
+}
 
-/* Toolbar fija abajo del sidenav */
+/* Separación entre la X y la lista */
+.left-sidenav mat-nav-list,
+.right-sidenav mat-nav-list {
+  margin-top: 48px;
+}
+
+/* Toolbar fija */
 .toolbar {
+  background-color: var(--color-primary-light);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: 56px;
-  z-index: 2000; /* menos que sidenav */
+  z-index: 2000;
   display: flex;
   align-items: center;
   padding: 0 8px;
+  justify-content: space-between;
+  margin-top: 4px; /* para que la barra no tape la toolbar */
+
+  /* Sombra para volumen */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Ocultamos el botón menú cuando el sidenav está abierto */
-/* Esto podés hacerlo con lógica Angular si querés */
 
+.toolbar-logo {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-/* Contenido ajustado */
+.toolbar-logo img {
+  height: 50%; /* ocupa toda la altura */
+  max-height: 45px; /* por seguridad */
+  object-fit: contain;
+}
+
+/* Botones circulares gris con fondo gris tenue por defecto + animación */
+.menu-btn,
+.person-btn {
+  border: 1px solid var(--color-secondary-dark);
+  border-radius: 50%;
+  padding: 7px 4px 4px 4px;
+  background-color: var(--color-secondary-light);
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.menu-btn:hover,
+.person-btn:hover {
+  background-color: rgba(226, 224, 224, 0.3);
+  border-color: rgb(184, 182, 182);
+  transform: scale(1.1); /* Efecto de agrandamiento suave */
+}
+
+.menu-btn:active,
+.person-btn:active {
+  transform: scale(0.95); /* Efecto de clic */
+}
+
+/* Contenido principal */
 mat-sidenav-content {
   margin-top: 56px;
   height: calc(100vh - 56px);
@@ -55,11 +114,15 @@ mat-sidenav-content {
   flex: 1 1 auto;
 }
 
-.content {
-  padding: 16px;
+.top-accent-bar {
+  background: linear-gradient(to right, var(--color-primary-dark), var(--color-secondary));
+  position: fixed; /* se pega arriba de la pantalla */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
 }
 
-mat-nav-list {
-  margin-top: 48px; /* o el espacio que necesites */
-}
+
+
 
