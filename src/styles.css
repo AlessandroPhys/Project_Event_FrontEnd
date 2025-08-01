@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    font-family: "Roboto Serif";
+}
+
 app-nav-bar {
     position: fixed;
     top: 0;
@@ -18,4 +22,15 @@ app-nav-bar {
     width: calc(100% - 60px);
     padding: 50px 30px;
     box-sizing: content-box;
+}
+
+.container-m {
+    width: 45%;
+}
+
+
+@media only screen and (max-width: 425px) {
+    .container-m {
+        width: 80%;
+    }
 }

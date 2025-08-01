@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
-import { NavBarComponent } from '../../nav-bar/nav-bar.component';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-auth',
@@ -12,14 +12,19 @@ import { NavBarComponent } from '../../nav-bar/nav-bar.component';
 })
 export class AuthComponent {
 
-  public email = null;
-  public password = null;
+  public email?;
+  public password?;
   
   constructor(private service: AuthService) {}
 
-  login() {
-    if (this.email !== null && this.password !== null) {
+  login(event) {
+    event.preventDefault();
+
+    if (event.target.checkValidity()) {
       this.service.login(this.email, this.password);
+    }
+    else {
+      event.target.reportValidity();
     }
   }
 
