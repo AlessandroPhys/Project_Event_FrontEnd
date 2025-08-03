@@ -1,0 +1,101 @@
+<mat-sidenav-container class="sidenav-container">
+
+  <!-- Sidenav izquierda (solo mobile) -->
+  <mat-sidenav #leftSidenav mode="over" position="start" class="sidenav-overlay left-sidenav">
+    <button mat-icon-button class="close-btn left-close-btn" (click)="leftSidenav.close()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/" (click)="leftSidenav.close()">Inicio</a>
+      <a mat-list-item routerLink="/events" (click)="leftSidenav.close()">Eventos</a>
+      <a mat-list-item routerLink="/about" (click)="leftSidenav.close()">Quiénes somos</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Sidenav derecha (solo mobile) -->
+  <mat-sidenav #rightSidenav mode="over" position="end" class="sidenav-overlay right-sidenav">
+    <button mat-icon-button class="close-btn right-close-btn" (click)="rightSidenav.close()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-nav-list>
+      <ng-container *ngIf="!isAuthenticated">
+        <a mat-list-item routerLink="/auth" (click)="rightSidenav.close()">Iniciar sesión</a>
+      </ng-container>
+      <ng-container *ngIf="isAuthenticated">
+        <a mat-list-item routerLink="/profile" (click)="rightSidenav.close()">Perfil</a>
+        <a mat-list-item routerLink="/settings" (click)="rightSidenav.close()">Configuración</a>
+        <a *ngIf="isAdmin" mat-list-item routerLink="/admin" (click)="rightSidenav.close()">Administración del Sitio</a>
+        <button mat-list-item (click)="logout(); rightSidenav.close()">Cerrar sesión</button>
+      </ng-container>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="top-accent-bar"></div>
+
+    <!-- Toolbar Mobile -->
+    <mat-toolbar color="primary" class="toolbar navbar-mobile">
+      <button mat-icon-button class="menu-btn" (click)="leftSidenav.open()">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <div class="toolbar-logo">
+        <img src="/assets/logos/logo.png" alt="Logo" />
+      </div>
+
+      <button mat-icon-button class="person-btn" (click)="rightSidenav.open()">
+        <mat-icon>person</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <!-- Toolbar Desktop -->
+    <mat-toolbar color="primary" class="toolbar navbar-desktop">
+      <div class="navbar-content">
+
+        <!-- Logo izquierda -->
+        <div class="toolbar-logo">
+          <img src="/assets/logos/logo.png" alt="Logo" />
+        </div>
+
+        <!-- Links centrados -->
+        <div class="toolbar-links">
+          <a mat-button routerLink="/">Inicio</a>
+          <a mat-button routerLink="/">Eventos</a>
+          <a mat-button routerLink="/">Quiénes somos</a>
+        </div>
+
+        <!-- Menú usuario / botón iniciar sesión -->
+        <div class="toolbar-user">
+
+          <!-- Si NO está autenticado -->
+          <ng-container *ngIf="!isAuthenticated; else loggedInMenu">
+            <button mat-raised-button color="accent" routerLink="/auth">
+              Iniciar sesión
+            </button>
+          </ng-container>
+
+          <!-- Si está autenticado -->
+          <ng-template #loggedInMenu>
+            <button mat-raised-button color="accent" [matMenuTriggerFor]="userMenu">
+              {{ userName || 'Usuario' }}
+            </button>
+            <mat-menu #userMenu="matMenu">
+              <button *ngIf="isAdmin" mat-menu-item routerLink="/admin" target="_blank">
+                Administración del Sitio
+              </button>
+              <button mat-menu-item (click)="logout()">
+                Cerrar sesión
+              </button>
+            </mat-menu>
+          </ng-template>
+
+        </div>
+
+      </div>
+    </mat-toolbar>
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

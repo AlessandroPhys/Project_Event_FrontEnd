@@ -1,0 +1,175 @@
+.events-container {
+  background-color: var(--color-background);
+  padding: 0.4rem 0.5rem;
+  /* base móvil */
+}
+
+/* Título */
+.section-title {
+  font-size: 1.8rem;
+  margin: 1rem 0;
+  color: var(--color-text-primary);
+}
+
+/* Grid base para móvil */
+.events-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* Tarjeta de evento */
+.event-card {
+  background: var(--color-secondary);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(84, 8, 4, 0.3);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: var(--color-text-light);
+  margin-top: 0.3rem;
+  min-height: 320px;
+}
+
+/* Imagen del evento */
+.event-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Información del evento */
+.event-info {
+  padding: 1rem;
+  flex: 1;
+}
+
+.meta {
+  padding-bottom: 0.25rem;
+}
+
+.meta.location {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.meta.capacity {
+  font-weight: normal;
+}
+
+/* Acciones */
+.event-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+  align-items: baseline;
+}
+
+/* Botón Editar */
+.btn-view {
+  height: 4em;
+  width: 40%;
+  min-width: 120px;
+  padding: 0 1rem;
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-view:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* Botón Comprar */
+.btn-ticket {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3em;
+  min-width: 11rem;
+  padding: 0 1.3rem;
+  background-color: #25D366;
+  color: white;
+  font-weight: 600;
+  border-radius: 4px;
+  font-size: 1.4rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-ticket:hover {
+  background-color: #1ebe57;
+}
+
+.icon-img {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  margin-right: 0.4em;
+  margin-bottom: 0.25rem;
+}
+
+/* Título evento */
+.event-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.event-datetime {
+  margin: 0.5rem 0;
+}
+
+.event-date {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-primary-dark);
+}
+
+.event-time {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+
+.event-price {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: green;
+  margin: 0.5rem 0;
+}
+
+/* Tablet: 2 columnas */
+@media (min-width: 768px) {
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .events-container {
+    padding: 0.4rem 1rem;
+  }
+}
+
+/* Laptop: 3 columnas */
+@media (min-width: 1440px) {
+  .events-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .events-container {
+    padding: 0.4rem 10rem;
+  }
+}
+
+/* Desktop: 3 columnas */
+@media (min-width: 1800px) {
+  .events-container {
+    padding: 0.4rem 23.5rem;
+  }
+}

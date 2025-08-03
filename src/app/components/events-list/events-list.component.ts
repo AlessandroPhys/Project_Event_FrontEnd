@@ -1,5 +1,8 @@
-import { Component,OnInit } from '@angular/core';
-import {EventService} from '../../services/event.service'; //Adjuntar la ruta
+import { Component, OnInit } from '@angular/core';
+import { EventService } from '../../services/event.service';
+import { AuthService } from '../../services/auth.service';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-events-list',
@@ -8,25 +11,40 @@ import {EventService} from '../../services/event.service'; //Adjuntar la ruta
   styleUrls: ['./events-list.component.css']
 })
 export class EventsListComponent implements OnInit {
-  title = 'mi-evento-frontend';
+  title = "Events app";
   events: any[] = [];
   isLoading: boolean = true;
-  errorMessage:string | null = null;
+  errorMessage: string | null = null;
 
-  constructor(private eventService: EventService) { }
+  constructor(
+    private eventService: EventService,
+    public authService: AuthService,
+    private iconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer
+  ) {
+    this.iconRegistry.addSvgIcon(
+      'calendar',
+      this.sanitizer.bypassSecurityTrustResourceUrl('/img/calendar.png')
+    );
+    this.iconRegistry.addSvgIcon(
+      'clock',
+      this.sanitizer.bypassSecurityTrustResourceUrl('/img/clock.png')
+    );
+    this.iconRegistry.addSvgIcon(
+      'marker',
+      this.sanitizer.bypassSecurityTrustResourceUrl('/img/marker.png')
+    );
+  }
 
-  ngOnInit():void {
-    this.eventService.getEvents().subscribe({
-      next:(data)=> {
-        this.events = data;
+  async ngOnInit() {
+    this.eventService.getEvents()
+      .then((json) => {
+        this.events = json;
         this.isLoading = false;
-        console.log('Eventos cargados:', this.events);
-      },
-      error:(err)=> {
-        this.errorMessage = 'Error al cargar eventos. Por favor, intentalo de nuevo mas tarde';
+      })
+      .catch(() => {
+        this.errorMessage = 'Error al cargar eventos. Por favor, intentalo de nuevo más tarde';
         this.isLoading = false;
-        console.error('Error al cargar eventos:', err);
-      }
-    });
+      });
   }
 }

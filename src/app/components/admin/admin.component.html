@@ -1,0 +1,53 @@
+<app-nav-bar></app-nav-bar>
+<div class="bg-body-secondary" style="min-height: 100vh;">
+    <main class="w-100 m-auto">
+        <div class="wrapper">
+            <h1 class="text-center mt-2 mb-4">ADMINISTRACIÓN DEL SISTEMA</h1>
+            <p class="text-center text-success" id="id_msg"></p>
+            <div id="section_1" style="display: block;">
+                <table class="table table-striped table-hover mt-2">
+                    <thead>
+                        <tr>
+                            <th scope="col">Tabla</th>
+                            <th scope="col" class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (app of apps; track app; let index = $index) {
+                            <tr>
+                                <td>{{ app.name }}</td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-outline-primary bi bi-eye m-1" title="Ver Todos" value="{{ index }}" (click)="getAll($event)"></button>
+                                    <button type="button" class="btn btn-outline-success bi-plus-lg m-1" title="Agregar" value="{{ index }}" (click)="create($event)"></button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div id="section_2" style="display: none;">
+                <table class="table table-striped table-hover mt-2">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+                <div class="text-end">
+                    <button type="button" class="btn btn-primary py-2 m-2" (click)="toggleBack(1, 2)">Volver</button>
+                </div>
+            </div>
+            <div id="section_3" style="display: none;">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"></div>
+                <div class="text-end">
+                    <button type="button" class="btn btn-success py-2 m-2" (click)="update()">Grabar</button>
+                    <button type="button" class="btn btn-primary py-2 m-2" (click)="toggleBack(2, 3)">Volver</button>
+                </div>
+            </div>
+            <div id="section_4" style="display: none;">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"></div>
+                <div class="text-end">
+                    <button type="button" class="btn btn-success py-2 m-2" (click)="save($event)">Grabar</button>
+                    <button type="button" class="btn btn-primary py-2 m-2" (click)="toggleBack(1, 4)">Volver</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

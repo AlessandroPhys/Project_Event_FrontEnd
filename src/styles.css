@@ -1,1 +1,109 @@
-/* You can add global styles to this file, and also import other style files */
+/* Variables globales - Colores semánticos */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+:root {
+  --font-primary: 'Roboto', sans-serif;
+  /* Colores primarios (rojo pastel) */
+  --color-primary:        #ff1500; /* Rojo */
+  --color-primary-dark:   #a85b52; /* terracota */
+  --color-primary-light:  #fd9389; /* rosa pastel */
+
+ /* Colores secundarios (amarillo suave, elegante) */
+--color-secondary:       #f0e8cc; /* amarillo marfil suave */
+--color-secondary-dark:  #c9b77a; /* arena tostada */
+--color-secondary-light: #faf4d6; /* crema muy clara */
+  /* Fondo y superficies */
+  --color-background: #fdfcfb; /* blanco cálido muy suave */
+  --color-surface:    #f9f7f4; /* gris cálido pastel */
+
+  /* Texto */
+  --color-text-primary:     #2b2b2b;
+  --color-text-secondary:   #5a5a5a;
+  --color-text-on-primary:  #ffffff;
+  --color-text-on-secondary:#2b2b2b;
+
+  /* Bordes */
+  --color-border: #e2d9d5; /* gris cálido */
+}
+
+
+
+.price {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; /* Bold para el precio */
+  font-size: 2rem;
+  color: #000;
+}
+
+/* Reset y base */
+* {
+  box-sizing: border-box;
+  font-family: var(--font-primary);
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  padding: 0;
+
+  min-height: 100vh;
+}
+
+/* Cards */
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-primary);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(84, 8, 4, 0.3);
+  color: var(--color-text-primary);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card svg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px 4px 0 0;
+}
+
+/* Layout app */
+.app-container {
+  display: block; /* no forzar altura ni flex */
+}
+
+.app-content {
+  padding: 50px 30px 60px; /* espacio para navbar y footer */
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .app-content {
+    padding: 30px 15px 60px;
+  }
+}
+
+/* Footer */
+app-footer {
+  color: var(--color-text-on-primary);
+  text-align: center;
+  display: block;
+}
+
+/* Texto secundario */
+.text-body-secondary {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
