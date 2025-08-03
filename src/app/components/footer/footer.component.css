@@ -5,7 +5,7 @@
   left: 0;
   background-repeat: repeat;
   margin-top: 1rem;
-  background-image: url('/img/pattern.png'); /* Patrón desde public */
+  background-image: url('/assets/images/backgrounds/pattern.png'); /* Patrón desde public */
   background-position: center;
   background-size: auto;
   color: var(--color-text-on-primary);
@@ -92,5 +92,22 @@
   color: var(--color-secondary-light);
   z-index: 2;
   box-sizing: border-box;
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Aumenta espacio entre iconos */
+  align-self: flex-end;
+}
+
+.footer-social a {
+  color: var(--color-text-on-primary);
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+  color: var(--color-primary-light);
 }
 

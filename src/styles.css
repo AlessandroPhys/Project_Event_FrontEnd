@@ -4,9 +4,9 @@
 :root {
   --font-primary: 'Roboto', sans-serif;
   /* Colores primarios (rojo pastel) */
-  --color-primary:        #d67a6f; /* coral suave */
+  --color-primary:        #ff1500; /* Rojo */
   --color-primary-dark:   #a85b52; /* terracota */
-  --color-primary-light:  #ff1500; /* rosa pastel */
+  --color-primary-light:  #fd9389; /* rosa pastel */
 
  /* Colores secundarios (amarillo suave, elegante) */
 --color-secondary:       #f0e8cc; /* amarillo marfil suave */

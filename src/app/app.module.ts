@@ -7,12 +7,12 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EventsListComponent } from './components/events-list/events-list.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { RegisterComponent } from './components/register/register.component';
+import { RegisterComponent } from './pages/register/register.component';
 import { FormsModule } from '@angular/forms';
-import { AdminComponent } from './components/admin/admin.component';
+import { AdminComponent } from './pages/admin/admin.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { AuthComponent } from './components/auth/auth.component';
+import { AuthComponent } from './pages/auth/auth.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';

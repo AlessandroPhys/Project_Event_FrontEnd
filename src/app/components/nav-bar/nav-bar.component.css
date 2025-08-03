@@ -7,7 +7,7 @@
 /* Estilos comunes para ambos sidenavs */
 .sidenav-overlay {
   position: fixed !important;
-  top: 0px !important; /* Oculta el overlay */
+  top: 0px !important;
   height: 100vh !important;
   width: 80% !important;
   z-index: 3000 !important;
@@ -16,7 +16,7 @@
   flex-direction: column;
   padding: 16px;
   box-sizing: border-box;
-  border-radius: 0 !important; /* Cuadrado */
+  border-radius: 0 !important;
 }
 
 /* Sidenav izquierda */
@@ -35,9 +35,11 @@
   top: 8px;
   z-index: 3100;
 }
+
 .left-close-btn {
   left: 8px;
 }
+
 .right-close-btn {
   right: 8px;
 }
@@ -48,9 +50,11 @@
   margin-top: 48px;
 }
 
-/* Toolbar fija */
+/* ===================
+   TOOLBARS
+=================== */
 .toolbar {
-  background-color: var(--color-primary-light);
+  background-color: var(--color-primary);
   position: fixed;
   top: 0;
   left: 0;
@@ -60,14 +64,11 @@
   display: flex;
   align-items: center;
   padding: 0 8px;
-  justify-content: space-between;
-  margin-top: 4px; /* para que la barra no tape la toolbar */
-
-  /* Sombra para volumen */
+  margin-top: 4px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
-
+/* Logo centrado dentro de toolbar */
 .toolbar-logo {
   flex-grow: 1;
   display: flex;
@@ -76,12 +77,12 @@
 }
 
 .toolbar-logo img {
-  height: 50%; /* ocupa toda la altura */
-  max-height: 45px; /* por seguridad */
+  height: 50%;
+  max-height: 45px;
   object-fit: contain;
 }
 
-/* Botones circulares gris con fondo gris tenue por defecto + animación */
+/* Botones circulares (Mobile) */
 .menu-btn,
 .person-btn {
   border: 1px solid var(--color-secondary-dark);
@@ -95,12 +96,12 @@
 .person-btn:hover {
   background-color: rgba(226, 224, 224, 0.3);
   border-color: rgb(184, 182, 182);
-  transform: scale(1.1); /* Efecto de agrandamiento suave */
+  transform: scale(1.1);
 }
 
 .menu-btn:active,
 .person-btn:active {
-  transform: scale(0.95); /* Efecto de clic */
+  transform: scale(0.95);
 }
 
 /* Contenido principal */
@@ -114,15 +115,101 @@ mat-sidenav-content {
   flex: 1 1 auto;
 }
 
+/* Barra superior decorativa */
 .top-accent-bar {
-  background: linear-gradient(to right, var(--color-primary-dark), var(--color-secondary));
-  position: fixed; /* se pega arriba de la pantalla */
+  background: linear-gradient(to right, #8a8256, #FFFF00);
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 4px;
+  z-index: 2100;
 }
 
+/* ===================
+   RESPONSIVE NAVBAR
+=================== */
+/* Mobile: hamburguesa visible */
+.navbar-mobile {
+  display: flex;
+}
 
+.navbar-desktop {
+  display: none;
+}
 
+/* Desktop >=768px: hamburguesa oculta, navbar completo */
+@media (min-width: 768px) {
+  .navbar-desktop {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-primary);
+    width: 100%;
+    padding: 0;
+    /* eliminar padding para que lo maneje navbar-content */
+  }
 
+  .navbar-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-inline: 2rem;
+    /* margen interno a los lados para separación */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Eliminar márgenes en extremos para que no acumulen margen con padding */
+  .toolbar-logo {
+    flex: 0 0 auto;
+    margin: 0;
+    /* eliminar margin-right */
+  }
+
+  .toolbar-logo img {
+    height: 45px;
+    max-height: 50px;
+  }
+
+  .toolbar-links a[mat-button] {
+    position: relative;
+    font-weight: 600;
+    color: white;
+    padding-bottom: 4px;
+    /* espacio para la línea decorativa superior */
+  }
+
+  .toolbar-links a[mat-button]::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--color-secondary);
+    transition: width 0.3s ease;
+    border-radius: 1px;
+  }
+
+  .toolbar-links a[mat-button]:hover::after {
+    width: 100%;
+  }
+
+  .toolbar-links a[mat-button]:hover {
+    color: var(--color-secondary);
+  }
+
+  .toolbar-action {
+    flex: 0 0 auto;
+    margin: 0;
+    /* eliminar margin-left */
+  }
+
+  .login-btn {
+    font-weight: 500;
+    color: var(--color-primary);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+  }
+}

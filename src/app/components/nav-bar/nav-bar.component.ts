@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,5 +12,17 @@ export class NavBarComponent {
   @ViewChild('leftSidenav') leftSidenav!: MatSidenav;
   @ViewChild('rightSidenav') rightSidenav!: MatSidenav;
 
-  // Si querés alguna lógica adicional, acá la ponés
+  isAuthenticated: boolean;
+  isAdmin: boolean;
+  userName: string | null;
+
+  constructor(private authService: AuthService) {
+    this.isAuthenticated = this.authService.isAuthenticated();
+    this.isAdmin = this.authService.isAdmin();
+    this.userName = this.authService.user;
+  }
+
+  logout(): void {
+    this.authService.logout();
+  }
 }
