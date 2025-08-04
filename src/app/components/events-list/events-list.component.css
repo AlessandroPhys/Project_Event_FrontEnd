@@ -73,7 +73,7 @@
   width: 40%;
   min-width: 120px;
   padding: 0 1rem;
-  background-color: var(--color-primary);
+  background-color: var(--color-primary-dark);
   color: var(--color-background);
   font-weight: 600;
   border: none;
@@ -84,7 +84,7 @@
 }
 
 .btn-view:hover {
-  background-color: var(--color-primary-dark);
+  background-color: var(--color-secondary-dark);
 }
 
 /* Botón Comprar */
