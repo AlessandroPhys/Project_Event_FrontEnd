@@ -19,6 +19,7 @@
     </button>
     <mat-nav-list>
       <ng-container *ngIf="!isAuthenticated">
+        <a mat-list-item routerLink="/register" (click)="leftSidenav.close()"> Registrarse</a>
         <a mat-list-item routerLink="/auth" (click)="rightSidenav.close()">Iniciar sesión</a>
       </ng-container>
       <ng-container *ngIf="isAuthenticated">
@@ -68,6 +69,9 @@
           <a mat-button routerLink="/">Inicio</a>
           <a mat-button routerLink="/">Eventos</a>
           <a mat-button routerLink="/">Quiénes somos</a>
+          <ng-container *ngIf="!isAuthenticated">
+            <a mat-button routerLink="/register"> Registrarse</a>
+          </ng-container>
         </div>
 
         <!-- Menú usuario / botón iniciar sesión -->

@@ -64,7 +64,7 @@ export class AdminComponent {
         {"name" : "id", "readOnly" : true, "type" : "text", "classList" : "form-control", "id" : "id"},
         {"name" : "title", "type" : "text", "minLength" : 4, "classList" : "form-control", "id" : "title", "required" : true, oninput : (event) => this.handleFormChanges(event)},
         {"name" : "description", "type" : "text", "minLength" : 4, "classList" : "form-control", "id" : "description", "required" : true, oninput : (event) => this.handleFormChanges(event)},
-        {"name" : "date_time", "type" : "datetime-locale", "classList" : "form-control", "id" : "date_time", "required" : true, oninput : (event) => this.handleFormChanges(event)},
+        {"name" : "date_time", "type" : "datetime-local", "classList" : "form-control", "id" : "date_time", "required" : true, oninput : (event) => this.handleFormChanges(event)},
         {"name" : "location", "type" : "text", "minLength" : 4, "classList" : "form-control", "id" : "location", "required" : true, oninput : (event) => this.handleFormChanges(event)},
         {"name" : "capacity", "type" : "number", "min" : 1, "classList" : "form-control", "id" : "capacity", "required" : true, oninput : (event) => this.handleFormChanges(event)},
         {"name" : "category_id", "classList" : "form-control", "id" : "category_id", "required" : true, oninput : (event) => this.handleFormChanges(event)}
