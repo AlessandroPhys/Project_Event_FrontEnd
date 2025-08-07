@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../environments/environment';
-import { RegisterService } from '../services/register.service';
+import { environment } from '../../../environments/environment';
+import { RegisterService } from '../../services/register.service';
 
 @Component({
   selector: 'app-register',
@@ -37,7 +37,16 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  register() {
-    this.registerService.register(this.first_name, this.last_name, this.state_id, this.email, this.password);
+  register(event) {
+    event.preventDefault();
+
+    if (event.target.checkValidity()) {
+      this.registerService.register(
+        this.first_name, this.last_name, this.state_id,
+        this.email, this.password);
+    }
+    else {
+      event.target.reportValidity();
+    }
   }
 }

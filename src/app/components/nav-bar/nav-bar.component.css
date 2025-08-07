@@ -1,0 +1,215 @@
+.sidenav-container {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+/* Estilos comunes para ambos sidenavs */
+.sidenav-overlay {
+  position: fixed !important;
+  top: 0px !important;
+  height: 100vh !important;
+  width: 80% !important;
+  z-index: 3000 !important;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  box-sizing: border-box;
+  border-radius: 0 !important;
+}
+
+/* Sidenav izquierda */
+.left-sidenav {
+  left: 0;
+}
+
+/* Sidenav derecha */
+.right-sidenav {
+  right: 0;
+}
+
+/* Botón cerrar */
+.close-btn {
+  position: absolute;
+  top: 8px;
+  z-index: 3100;
+}
+
+.left-close-btn {
+  left: 8px;
+}
+
+.right-close-btn {
+  right: 8px;
+}
+
+/* Separación entre la X y la lista */
+.left-sidenav mat-nav-list,
+.right-sidenav mat-nav-list {
+  margin-top: 48px;
+}
+
+/* ===================
+   TOOLBARS
+=================== */
+.toolbar {
+  background-color: var(--color-primary);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  margin-top: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Logo centrado dentro de toolbar */
+.toolbar-logo {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toolbar-logo img {
+  height: 50%;
+  max-height: 45px;
+  object-fit: contain;
+}
+
+/* Botones circulares (Mobile) */
+.menu-btn,
+.person-btn {
+  border: 1px solid var(--color-secondary-dark);
+  border-radius: 50%;
+  padding: 7px 4px 4px 4px;
+  background-color: var(--color-secondary-light);
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.menu-btn:hover,
+.person-btn:hover {
+  background-color: rgba(226, 224, 224, 0.3);
+  border-color: rgb(184, 182, 182);
+  transform: scale(1.1);
+}
+
+.menu-btn:active,
+.person-btn:active {
+  transform: scale(0.95);
+}
+
+/* Contenido principal */
+mat-sidenav-content {
+  margin-top: 56px;
+  height: calc(100vh - 56px);
+  overflow: auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Barra superior decorativa */
+.top-accent-bar {
+  background: linear-gradient(to right, #8a8256, #FFFF00);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  z-index: 2100;
+}
+
+/* ===================
+   RESPONSIVE NAVBAR
+=================== */
+/* Mobile: hamburguesa visible */
+.navbar-mobile {
+  display: flex;
+}
+
+.navbar-desktop {
+  display: none;
+}
+
+/* Desktop >=768px: hamburguesa oculta, navbar completo */
+@media (min-width: 768px) {
+  .navbar-desktop {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-primary);
+    width: 100%;
+    padding: 0;
+    /* eliminar padding para que lo maneje navbar-content */
+  }
+
+  .navbar-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-inline: 2rem;
+    /* margen interno a los lados para separación */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Eliminar márgenes en extremos para que no acumulen margen con padding */
+  .toolbar-logo {
+    flex: 0 0 auto;
+    margin: 0;
+    /* eliminar margin-right */
+  }
+
+  .toolbar-logo img {
+    height: 45px;
+    max-height: 50px;
+  }
+
+  .toolbar-links a[mat-button] {
+    position: relative;
+    font-weight: 600;
+    color: white;
+    padding-bottom: 4px;
+    /* espacio para la línea decorativa superior */
+  }
+
+  .toolbar-links a[mat-button]::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--color-secondary);
+    transition: width 0.3s ease;
+    border-radius: 1px;
+  }
+
+  .toolbar-links a[mat-button]:hover::after {
+    width: 100%;
+  }
+
+  .toolbar-links a[mat-button]:hover {
+    color: var(--color-secondary);
+  }
+
+  .toolbar-action {
+    flex: 0 0 auto;
+    margin: 0;
+    /* eliminar margin-left */
+  }
+
+  .login-btn {
+    font-weight: 500;
+    color: var(--color-primary);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+  }
+}
