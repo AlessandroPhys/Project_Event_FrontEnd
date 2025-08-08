@@ -5,6 +5,8 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AdminGuard } from './components/guards/admin-guard.guard';
 import { AdminComponent } from './pages/admin/admin.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 const routes: Routes = [
   // Home en la raíz
@@ -14,7 +16,9 @@ const routes: Routes = [
   { path : "register", component : RegisterComponent },
   { path : "auth", component : AuthComponent },
   { path : "admin", component : AdminComponent, canActivate : [AdminGuard] },
-  { path: '**', redirectTo: '/auth' }
+  { path : "about", component : AboutComponent },
+  { path : "contact", component : ContactComponent },
+  { path : '**', redirectTo: '/auth' }
 ];
 
 @NgModule({

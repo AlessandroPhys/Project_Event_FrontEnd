@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { AboutComponent } from './pages/about/about.component';
+import { MatCardModule } from '@angular/material/card';
+import { ContactComponent } from './pages/contact/contact.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,10 +38,13 @@ import { MatMenuModule } from '@angular/material/menu';
     AdminComponent,
     HomeComponent,
     NavBarComponent,
-    FooterComponent,      // <-- Pone acá los componentes
+    FooterComponent,
+    AboutComponent,
+    ContactComponent,      // <-- Pone acá los componentes
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -42,7 +53,11 @@ import { MatMenuModule } from '@angular/material/menu';
     MatListModule,
     MatButtonModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
 
   ],
   providers: [],

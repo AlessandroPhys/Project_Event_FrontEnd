@@ -1,0 +1,30 @@
+form {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 24px;
+  background-color: #fafafa;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+  padding: 12px 24px;
+  font-weight: bold;
+}
+
+mat-form-field.mat-form-field {
+  background: white;
+  border-radius: 6px;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}

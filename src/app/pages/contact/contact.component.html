@@ -1,0 +1,26 @@
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+  <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput placeholder="Tu nombre" formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" placeholder="Tu correo" formControlName="email">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+      <mat-label>Asunto</mat-label>
+      <input matInput placeholder="Asunto" formControlName="subject">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+      <mat-label>Mensaje</mat-label>
+      <textarea matInput placeholder="Escribí tu mensaje" formControlName="message"></textarea>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="contactForm.invalid">
+      Enviar
+  </button>
+</form>
