@@ -1,8 +1,17 @@
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  background-image: url('/assets/images/backgrounds/pattern.png'); /* Patrón desde public */
+  align-items: center;
+  padding: 20px;
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+}
+
 form {
   max-width: 600px;
   margin: 40px auto;
   padding: 24px;
-  background-color: #fafafa;
+  background-color: var(--color-background);
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }

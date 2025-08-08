@@ -9,6 +9,7 @@
       <a mat-list-item routerLink="/" (click)="leftSidenav.close()">Inicio</a>
       <a mat-list-item routerLink="/events" (click)="leftSidenav.close()">Eventos</a>
       <a mat-list-item routerLink="/about" (click)="leftSidenav.close()">Quiénes somos</a>
+      <a mat-list-item routerLink="/contact" (click)="leftSidenav.close()">Contacto</a>
     </mat-nav-list>
   </mat-sidenav>
 
@@ -69,6 +70,7 @@
           <a mat-button routerLink="/">Inicio</a>
           <a mat-button routerLink="/">Eventos</a>
           <a mat-button routerLink="/about">Quiénes somos</a>
+          <a mat-button routerLink="/contact">Contacto</a>
           <ng-container *ngIf="!isAuthenticated">
             <a mat-button routerLink="/register"> Registrarse</a>
           </ng-container>
