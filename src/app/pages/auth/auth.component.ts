@@ -19,6 +19,7 @@ export class AuthComponent {
 
   login(event) {
     event.preventDefault();
+    event.stopImmediatePropagation();
 
     if (event.target.checkValidity()) {
       this.service.login(this.email, this.password);
@@ -28,7 +29,8 @@ export class AuthComponent {
     }
   }
 
-  logout() {
+  logout(event) {
+    event.stopImmediatePropagation();
     this.service.logout();
   }
 }

@@ -38,7 +38,7 @@ export class AuthService {
         this.user = email;
         localStorage.setItem("user", email);
         if (this.isAuthenticated()) {
-          this.router.navigate(['/']);
+          window.open("/", "_self");
         }
       }
     });
@@ -74,12 +74,13 @@ export class AuthService {
     fetch(`${this.baseURL}/api/v1/auth/logout`, {
       method: "POST",
       headers: {
-        "Content-Type" : "application/json"
+        "Content-Type" : "application/json",
+        "Accept" : "application/json"
       }
     })
-    .then((res) => {
+    .then(() => {
       localStorage.clear();
-      this.router.navigate(["/"]);
-    });
+    })
+    .finally(() => window.open("/", "_self"));
   }
 }
