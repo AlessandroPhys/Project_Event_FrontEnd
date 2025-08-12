@@ -85,7 +85,11 @@ export class AdminComponent {
   }
 
   handleFormChanges(event) {
-    this.data = {...this.data, [event.target.name] : event.target.value};
+    let value = event.target.value
+    if (event.target.type === "datetime-local") {
+      value = `${value.substring(0, 10)} ${value.substring(11)}`;
+    }
+    this.data = {...this.data, [event.target.name] : value};
   }
 
   createTableHead(node, array) {
