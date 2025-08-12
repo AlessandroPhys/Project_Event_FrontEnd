@@ -1,12 +1,16 @@
-<ng-container *ngIf="event; else loading" >
-  <h2>{{event.title}}</h2>
-  <p>{{ event.date_time | date:'dd MMM yyyy' }}<p>
-  <p>{{ event.location }}</p>
-  <p>{{event.capacity}}</p>
-</ng-container>
+<div class="event-container">
+  <ng-container *ngIf="event; else loading">
+    <div class="event-box">
+      <h2>{{ event.title }}</h2>
+      <p>{{ event.date_time | date:'dd MMM yyyy' }}</p>
+      <p>{{ event.location }}</p>
+      <p>{{ event.capacity }}</p>
+    </div>
+  </ng-container>
+</div>
 
 <ng-template #loading>
-  <p>Cargando Evento ...</p>
+  <div class="event-container">
+    <p class="loading-text">Cargando Evento ...</p>
+  </div>
 </ng-template>
-
-

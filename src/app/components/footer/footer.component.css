@@ -1,7 +1,6 @@
 /* FOOTER PRINCIPAL CON PATRÓN */
 .footer {
   position: relative;
-  width: 100vw; /* Ocupa todo el ancho de la ventana */
   left: 0;
   background-repeat: repeat;
   margin-top: 1rem;

@@ -1,0 +1,36 @@
+.event-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
+  background-color: #f5f5f5;
+}
+
+.event-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+.event-box h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: #b30000;
+}
+
+.event-box p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+.loading-text {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+}
