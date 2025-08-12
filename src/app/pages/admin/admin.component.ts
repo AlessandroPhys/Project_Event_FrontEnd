@@ -17,7 +17,9 @@ export class AdminComponent {
       "fields" : [
         {"name" : "id", "readOnly" : true, "type" : "text", "classList" : "form-control", "id" : "id"},
         {"name" : "description", "type" : "text", "minLength" : 4, "classList" : "form-control", "id" : "description", "required" : true, oninput : (event) => this.handleFormChanges(event)}
-    ]},
+      ],
+      "extra_fields" : []
+    },
     {
       "name" : "States", "url" : "/api/v1/states", "head" : ["Descripción", "Pais"], "body" : ["description", "country_id"],
       "types" : ["input", "input", "select"],
@@ -26,7 +28,9 @@ export class AdminComponent {
         {"name" : "id", "readOnly" : true, "type" : "text", "classList" : "form-control", "id" : "id"},
         {"name" : "description", "type" : "text", "minLength" : 4, "classList" : "form-control", "id" : "description", "required" : true, oninput : (event) => this.handleFormChanges(event)},
         {"name" : "country_id", "classList" : "form-control", "id" : "contry_id", "required" : true, oninput : (event) => this.handleFormChanges(event)}
-    ]},
+      ],
+      "extra_fields" : []
+    },
     {
       "name" : "Categories", "url" : "/api/v1/categories", "head" : ["Descripción"],  "body" : ["description"],
       "types" : ["input", "input"],
@@ -34,7 +38,9 @@ export class AdminComponent {
       "fields" : [
         {"name" : "id", "readOnly" : true, "type" : "text", "classList" : "form-control", "id" : "id"},
         {"name" : "description", "type" : "text", "minLength" : 4, "classList" : "form-control", "id" : "description", "required" : true, oninput : (event) => this.handleFormChanges(event)}
-    ]},
+      ],
+      "extra_fields" : []
+    },
     {
       "name" : "Status", "url" : "/api/v1/status", "head" : ["Descripción"],  "body" : ["description"],
       "types" : ["input", "input"],
@@ -42,7 +48,9 @@ export class AdminComponent {
       "fields" : [
         {"name" : "id", "readOnly" : true, "type" : "text", "classList" : "form-control", "id" : "id"},
         {"name" : "description", "type" : "text", "minLength" : 4, "classList" : "form-control", "id" : "description", "required" : true, oninput : (event) => this.handleFormChanges(event)}
-    ]},
+      ],
+      "extra_fields" : []
+    },
     {
       "name" : "Users", "url" : "/api/v1/users", "head" : ["Nombres", "Apellido", "Email", "Rol"],  "body" : ["first_name", "last_name", "email", "role_id"],
       "types" : ["input", "input", "input", "input", "input", "select", "select"],
@@ -55,7 +63,9 @@ export class AdminComponent {
         {"name" : "password", "type" : "password", "minLength" : 8, "classList" : "form-control", "id" : "password", "required" : true, oninput : (event) => this.handleFormChanges(event)},
         {"name" : "role_id", "classList" : "form-control", "id" : "role_id", "required" : true, oninput : (event) => this.handleFormChanges(event)},
         {"name" : "state_id", "classList" : "form-control", "id" : "state_id", "required" : true, oninput : (event) => this.handleFormChanges(event)}
-    ]},
+      ],
+      "extra_fields" : []
+    },
     {
       "name" : "Events", "url" : "/api/v1/events", "head" : ["Titulo", "Categoria", "Ubicación", "Fecha"],  "body" : ["title", "category_id", "location", "date_time"],
       "types" : ["input", "input", "input", "input", "input", "input", "select"],
@@ -67,8 +77,10 @@ export class AdminComponent {
         {"name" : "date_time", "type" : "datetime-local", "classList" : "form-control", "id" : "date_time", "required" : true, oninput : (event) => this.handleFormChanges(event)},
         {"name" : "location", "type" : "text", "minLength" : 4, "classList" : "form-control", "id" : "location", "required" : true, oninput : (event) => this.handleFormChanges(event)},
         {"name" : "capacity", "type" : "number", "min" : 1, "classList" : "form-control", "id" : "capacity", "required" : true, oninput : (event) => this.handleFormChanges(event)},
-        {"name" : "category_id", "classList" : "form-control", "id" : "category_id", "required" : true, oninput : (event) => this.handleFormChanges(event)}
-    ]},
+        {"name" : "category_id", "classList" : "form-control", "id" : "category_id", "required" : true, onchange : (event) => this.handleFormChanges(event)},
+      ],
+      "extra_fields" : [{"user_id" : localStorage.getItem("user_id")}]
+    }
   ];
   data = {};
   url?
@@ -239,8 +251,12 @@ export class AdminComponent {
             classList : "form-label"}, "label"),
           elm);
         section4.children[0].appendChild(div);
+        for (let obj of this.apps[event.target.value]["extra_fields"]) {
+          for (let prop in obj) {
+            this.data[prop] = obj[prop];
+          }
+        }
       }
-
       section1.style.display = "none";
       section4.style.display = "block";
     }
@@ -248,7 +264,7 @@ export class AdminComponent {
 
   save(event) {
     event.preventDefault();
-
+  
     if (event.target.checkValidity()) {
       this.authService.wrapper(this.url, "POST", this.data)
       .then((json) => {
@@ -265,16 +281,23 @@ export class AdminComponent {
     }
   }
 
-  update() {
-    this.authService.wrapper(this.url, "PUT", this.data)
-    .then((json) => {
-      if (json !== null) {
-        let elm = document.getElementById("id_msg");
-        if (elm !== null) {
-          elm.innerText = "Cambios Realizados";
+  update(event) {
+    event.preventdefault();
+
+    if (event.target.checkValidity()) {
+      this.authService.wrapper(this.url, "PUT", this.data)
+      .then((json) => {
+        if (json !== null) {
+          let elm = document.getElementById("id_msg");
+          if (elm !== null) {
+            elm.innerText = "Cambios Realizados";
+          }
         }
-      }
-    });
+      });
+    }
+    else {
+      event.target.reportValidity();
+    }
   }
 
   delete(event) {
