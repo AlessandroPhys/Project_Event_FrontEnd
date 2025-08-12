@@ -33,20 +33,20 @@
                     <button type="button" class="btn btn-primary py-2 m-2" (click)="toggleBack(1, 2)">Volver</button>
                 </div>
             </div>
-            <div id="section_3" style="display: none;">
+            <form id="section_3" style="display: none;" (submit)="update($event)">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"></div>
                 <div class="text-end">
-                    <button type="button" class="btn btn-success py-2 m-2" (click)="update()">Grabar</button>
+                    <button type="submit" class="btn btn-success py-2 m-2">Grabar</button>
                     <button type="button" class="btn btn-primary py-2 m-2" (click)="toggleBack(2, 3)">Volver</button>
                 </div>
-            </div>
-            <div id="section_4" style="display: none;">
+            </form>
+            <form id="section_4" style="display: none;" (submit)="save($event)">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"></div>
                 <div class="text-end">
-                    <button type="button" class="btn btn-success py-2 m-2" (click)="save($event)">Grabar</button>
+                    <button type="submit" class="btn btn-success py-2 m-2">Grabar</button>
                     <button type="button" class="btn btn-primary py-2 m-2" (click)="toggleBack(1, 4)">Volver</button>
                 </div>
-            </div>
+            </form>
         </div>
     </main>
 </div>

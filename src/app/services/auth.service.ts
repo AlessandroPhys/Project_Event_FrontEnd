@@ -35,6 +35,7 @@ export class AuthService {
       else {
         localStorage.setItem("token", json["token"]);
         localStorage.setItem("role", json["role"]);
+        localStorage.setItem("user_id", json["id"]);
         this.user = email;
         localStorage.setItem("user", email);
         if (this.isAuthenticated()) {
