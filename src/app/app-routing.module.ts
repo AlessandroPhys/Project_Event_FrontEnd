@@ -7,6 +7,7 @@ import { AdminGuard } from './components/guards/admin-guard.guard';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { EventDetailComponent } from './pages/event-detail/event-detail.component';
 
 const routes: Routes = [
   // Home en la raíz
@@ -14,6 +15,7 @@ const routes: Routes = [
 
   // Rutas públicas
   { path : "register", component : RegisterComponent },
+  { path : "events/:id", component :EventDetailComponent},
   { path : "auth", component : AuthComponent },
   { path : "admin", component : AdminComponent, canActivate : [AdminGuard] },
   { path : "about", component : AboutComponent },

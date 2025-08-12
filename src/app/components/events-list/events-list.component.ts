@@ -4,6 +4,7 @@ import { EventService } from '../../services/event.service';
 import { AuthService } from '../../services/auth.service';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-events-list',
@@ -21,7 +22,8 @@ export class EventsListComponent implements OnInit {
     private eventService: EventService,
     public authService: AuthService,
     private iconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private router: Router
   ) {
     this.iconRegistry.addSvgIcon(
       'calendar',
@@ -47,5 +49,10 @@ export class EventsListComponent implements OnInit {
         this.errorMessage = 'Error al cargar eventos. Por favor, intentalo de nuevo más tarde';
         this.isLoading = false;
       });
+  }
+
+  openEventDetail(event: any) {
+    const url= this.router.serializeUrl(this.router.createUrlTree(['/events',event.id]));
+    window.open(url, '_blank','noopener');
   }
 }

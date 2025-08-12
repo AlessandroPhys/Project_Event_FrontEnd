@@ -12,10 +12,6 @@ export class EventService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  // getEvents(): Observable<any[]> {//Asumimos que devuelve un array de eventos
-  //   return this.http.get<any[]>(`${this.apiUrl}/api/v1/events`);
-  // }
-
   async getEvents() {
     return await this.authService.wrapper("/api/v1/events", "GET");
   }

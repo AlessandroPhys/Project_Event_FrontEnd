@@ -28,6 +28,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { EventDetailComponent } from './pages/event-detail/event-detail.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavBarComponent,
     FooterComponent,
     AboutComponent,
-    ContactComponent,      // <-- Pone acá los componentes
+    ContactComponent,
+    EventDetailComponent      // <-- Pone acá los componentes
   ],
   imports: [
     BrowserModule,
