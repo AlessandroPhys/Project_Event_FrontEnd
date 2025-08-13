@@ -282,7 +282,7 @@ export class AdminComponent {
   }
 
   update(event) {
-    event.preventdefault();
+    event.preventDefault();
 
     if (event.target.checkValidity()) {
       this.authService.wrapper(this.url, "PUT", this.data)

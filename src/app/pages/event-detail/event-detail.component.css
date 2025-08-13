@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; 
+  min-height: max-content; 
   background-color: #f5f5f5;
 }
 
@@ -10,10 +10,10 @@
   background: #fff;
   border-radius: 12px;
   padding: 2rem;
-  max-width: 500px;
-  width: 90%;
+  max-width: 1000px;
+  width: 100%;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  text-align: start;
   font-family: "Segoe UI", Roboto, sans-serif;
 }
 
@@ -33,4 +33,15 @@
   text-align: center;
   font-size: 1.2rem;
   color: #888;
+}
+
+.event-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+h2{
+  text-align: center;
 }

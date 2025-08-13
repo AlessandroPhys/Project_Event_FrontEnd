@@ -1,10 +1,17 @@
 <div class="event-container">
   <ng-container *ngIf="event; else loading">
     <div class="event-box">
-      <h2>{{ event.title }}</h2>
-      <p>{{ event.date_time | date:'dd MMM yyyy' }}</p>
-      <p>{{ event.location }}</p>
-      <p>{{ event.capacity }}</p>
+      <div class="event-image-box">
+        <img class="event-image" [src]="'/assets/images/events/' + event.image_url" alt="{{ event.title }}"
+          onerror="this.src='/assets/images/events/partido-de-rugby-.png'" />
+      </div>
+     <div class="event-details">
+       <h2>{{ event.title }}</h2>
+       <p>Fecha: {{ event.date_time | date:'dd MMM yyyy' }}</p>
+       <p>Lugar del Evento: {{ event.location }}</p>
+       <p>Capacidad del Evento: {{ event.capacity }} personas</p>
+       <p>{{ event.description }}</p>
+     </div>
     </div>
   </ng-container>
 </div>

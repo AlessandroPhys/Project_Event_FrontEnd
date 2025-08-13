@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../../services/event.service';
+
 
 @Component({
   selector: 'app-event-detail',
   standalone: false,
   templateUrl: './event-detail.component.html',
-  styleUrl: './event-detail.component.css'
+  styleUrl: './event-detail.component.css',
 })
 export class EventDetailComponent implements OnInit {
   event : any = null;
