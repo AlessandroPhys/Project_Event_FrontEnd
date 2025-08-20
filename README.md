@@ -1,6 +1,63 @@
-# EventAppFront
+# EventsApp - Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.1.
+## Project description
+
+This is the repository for the Frontend of our sports event management website: 
+https://github.com/Dhoron22/Project_Event_FrontEnd.git
+
+It works together with a separate **backend** developed in Laravel.  
+
+You can find the backend repository here: https://github.com/Dhoron22/Project_Event_BackEnd.git
+
+
+The goal of this website is to provide a service for the sports community to discover, promote, and manage sports events.
+
+We have focused on local sports events, aiming to provide an intuitive interface for both organizers and users.
+
+## Key Features
+
+ - **Feature 1:** User registration and login
+ - **Feature 2:** Creation, editing, and deletion of events by the administrator
+ - **Feature 3:** Creation, editing, and deletion of countries by the administrator
+ - **Feature 4:** Creation, editing, and deletion of states by the administrator
+ - **Feature 5:** Creation, editing, and deletion of categories by the administrator
+ - **Feature 6:** Creation, editing, and deletion of status by the administrator
+ - **Feature 7:** Creation, editing, and deletion of users by the administrator
+ - **Feature 8:** Event list and event detail visualization
+ - **Feature 9:** About Us section visualization
+ - **Feature 10:** Contact form with the company
+ - **Feature 11:** User authentication
+
+---
+## Technologies Used
+
+### Frontend (Folder: Project_Event_FrontEnd)
+ - **Languages:** TypeScript, HTML, JavaScript
+ - **Frameworks:** This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.1.
+ - **Package management:** npm 10.9.0
+ - **Styles:** CSS, Bootstrap, Angular Material
+
+---
+## Local installation and execution
+To run this project locally, make sure you also have the backend running.  
+Follow the steps below:
+
+### 1 Prerequisites
+Make sure you have the following installed
+ - **npm:** v10.9.0
+ - **Node.js:** v22.11.0
+ - **Angular CLI:** v19.0.1
+ - **Angular Material:** v19.2.19
+ - **Bootstrap:**v5.3.7
+ - **Git:** The latest version
+
+### 2 Clone the repository
+Open your terminal and clone the repository in the same root folder:
+
+# Clone the Frontend repository (in a new terminal or by going back to the root folder)
+cd .. # If you are in the backend folder
+git clone https://github.com/Dhoron22/Project_Event_FrontEnd.git
+cd Project_Event_FrontEnd
 
 ## Development server
 
