@@ -48,7 +48,7 @@ Make sure you have the following installed
  - **Node.js:** v22.11.0
  - **Angular CLI:** v19.0.1
  - **Angular Material:** v19.2.19
- - **Bootstrap:**v5.3.7
+ - **Bootstrap:** v5.3.7
  - **Git:** The latest version
 
 ### 2 Clone the repository
