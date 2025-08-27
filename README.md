@@ -14,6 +14,27 @@ The goal of this website is to provide a service for the sports community to dis
 
 We have focused on local sports events, aiming to provide an intuitive interface for both organizers and users.
 
+## Screenshots
+
+Login / Registration
+<img width="1167" height="476" alt="image" src="https://github.com/user-attachments/assets/fe91305f-b5fc-45a6-a9f2-3720c5240a84" />
+
+
+Admin Panel
+<img width="1490" height="607" alt="image" src="https://github.com/user-attachments/assets/f9fbf689-5223-4f0e-bd35-85c86f2c7010" />
+
+
+Event List
+<img width="1919" height="910" alt="image" src="https://github.com/user-attachments/assets/4338b62a-8cd3-4e86-991c-e917c753b9f8" />
+
+
+Contact
+<img width="1170" height="702" alt="image" src="https://github.com/user-attachments/assets/ca86fda4-eebc-48dd-9eb2-a13507769d73" />
+
+
+Responsive View (Mobile / Tablet)
+<img width="426" height="822" alt="image" src="https://github.com/user-attachments/assets/81b12f6e-4264-4ab9-8266-ceb1e97c478b" />
+
 ## Key Features
 
  - **Feature 1:** User registration and login
